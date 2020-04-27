@@ -6,7 +6,7 @@ pipeline {
        stage('docker-compose') {
            steps {
               sh "docker build -t my-nginx ."
-              sh ""
+              sh "docker container run -i -d -p 80:80 -v ~/pipelineTest/src:/usr/share/nginx/html --name nginx my-nginx"
            }
        }
    }
