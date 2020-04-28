@@ -6,7 +6,7 @@ pipeline {
        stage('docker-build') {
            steps {
               sh "docker build -t my-nginx-image ."
-              sh script : '''if [ $(docker ps -q -f name=nginx) ]
+              sh script : '''if [ $(docker ps -aqf name=nginx) ]
                              then
                                  docker container rm -f nginx
                              fi
